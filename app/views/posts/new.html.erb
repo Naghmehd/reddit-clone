@@ -1,1 +1,24 @@
 <h1>New Post</h1>
+<%= form_for [Post.new], :html => {:class => "form-horizontal center"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Title:", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Description:", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link, "Link:", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :link, class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+ <% end %>
