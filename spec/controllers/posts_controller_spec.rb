@@ -22,4 +22,13 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    let!(:post) { Post.create(title: 'Hello') }
+    it "delete a post" do
+      expect {
+        delete :destroy, params: { id: post.id }
+      }.to change{Post.count}.by(-1)
+    end
+  end
 end
