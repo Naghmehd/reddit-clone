@@ -11,10 +11,21 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
 @import "bootstrap";
+@import "font-awesome";
 
 .card-block {
   padding: 3%;
   font-weight: 500;
   color: #6697EA;
+}
+
+.index {
+  list-style-type: none;
+}
+
+.xdelete {
+  position: absolute;
+  right:20px;
 }

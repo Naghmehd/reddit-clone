@@ -7,7 +7,18 @@
   <% @posts.each do |post| %>
   <div class="card">
     <div id="title" class="card-block">
-      <%= post.title %>
+      <ul class="row index">
+        <li>
+          <%= post.title %>
+        </li>
+        <li class="xdelete"><%= link_to post,
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete this post?" },
+              class: "delete"  do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+        </li>
+      </ul>
     </div>
   </div>
   <% end %>

@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 
+gem "font-awesome-rails"
+
 gem 'jquery-rails'
 
 group :development, :test do
