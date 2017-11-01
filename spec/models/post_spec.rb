@@ -28,4 +28,9 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  it 'has many comments' do
+    relation = described_class.reflect_on_association(:comments)
+    expect(relation.macro).to eq :has_many
+  end
 end
