@@ -1,9 +1,4 @@
 <h1>All Posts: </h2>
- <% if flash[:notice] %>
-   <div class="alert alert-success" role="alert">
-       <div class="error"><%= flash[:notice] %></div>
-   </div>
- <% end %>
   <% @posts.each do |post| %>
   <div class="card">
     <div id="title" class="card-block">
@@ -19,6 +14,7 @@
             <% end %>
         </li>
       </ul>
+      <div class="add-comment"><%= link_to "ADD COMMENT", new_comment_path(post_id: post.id) %></div>
     </div>
   </div>
   <% end %>
