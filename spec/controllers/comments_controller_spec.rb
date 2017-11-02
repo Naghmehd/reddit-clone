@@ -1,16 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  let(:comment_params) { comment: { description: 'Awesome post!' } }
-  let(:post_id) { (1..100).sample }
-  let(:create!) { post :create, comment: comment_params, poste_id: post_id }
+  let(:postv) { Post.create(title: 'hio') }
 
-  it "creates new comment" do
-    expect { create! }.to change { Comment.count }.by 1
+  describe 'COMMENT #new' do
+    context 'with post id' do
+      it 'responds with 200' do
+        get :new, params: { post_id: postv.id }
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'without a post id' do
+      it 'responds with 404' do
+        expect {
+          get :new, params: { post_id: '' }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
   end
 
-  it "assigns given comment to correct post" do
-    create!
-    expect(assigns(:comment).post_id).to eq params[:post_id]
+  describe 'COMMENT #create' do
+    context 'with description and post id' do
+      it 'creates the comment' do
+        params = { comment: {description: 'cool', post_id: postv.id } }
+        expect{
+          post :create, params: params
+        }.to change{Comment.count}.from(0).to(1)
+      end
+    end
+
+    context 'with empty description' do
+      it 'should have an error' do
+        params = { comment: {description: '', post_id: postv.id } }
+        post :create, params: params
+        expect(flash[:error].to_s).to match(/can't be blank/)
+      end
+    end
   end
 end
