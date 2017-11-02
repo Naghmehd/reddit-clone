@@ -8,7 +8,7 @@ class  CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to root_path
+      redirect_to post_path(post_id: comment_params[:post_id])
     else
       flash[:error] = @comment.errors.full_messages
       redirect_to new_comment_path(post_id: comment_params[:post_id])

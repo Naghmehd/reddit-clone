@@ -15,12 +15,30 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body {
+  color: #8C8C8C;
+}
+
+hr {
+  min-width:85%;
+  background-color:#D3D3D3 !important;
+  height:1px;
+}
+
 .card-block {
   padding: 3%;
   font-weight: 500;
   color: #6697EA;
 }
 
+table th, .table td {
+    border-bottom: 1px solid #e9ecef;
+  }
+
+.table th, .table td {
+     border-top: none !important;
+ }
+ 
 div.add-comment {
   font-weight: 600;
   font-size: x-small;

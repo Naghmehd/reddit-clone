@@ -4,7 +4,7 @@
     <div id="title" class="card-block">
       <ul class="row index">
         <li>
-          <%= post.title %>
+          <%= link_to "#{post.title}", post %>
         </li>
         <li class="xdelete"><%= link_to post,
               method: :delete,
