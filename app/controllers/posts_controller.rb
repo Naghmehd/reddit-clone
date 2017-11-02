@@ -13,15 +13,13 @@ class  PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    respond_to do |format|
        if @post.save
          flash[:notice] = 'Post was successfully created.'
-         format.html { redirect_to root_path }
+        redirect_to root_path
        else
          flash[:error] = @post.errors.full_messages
-         format.html { render new_post_path }
+         render new_post_path
        end
-     end
   end
 
   def destroy
