@@ -18,6 +18,7 @@
         <ul class="row index">
           <li class="add-comment"><%= link_to "ADD COMMENT", new_comment_path(post_id: post.id) %>
           </li>
+          <li class="pull-right"><%= current_user.email %></li>
       </ul>
       </div>
     </div>

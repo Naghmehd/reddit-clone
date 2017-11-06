@@ -19,6 +19,11 @@ body {
   color: #8C8C8C;
 }
 
+.container {
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+}
+
 hr {
   min-width:85%;
   background-color:#D3D3D3 !important;
@@ -26,7 +31,7 @@ hr {
 }
 
 .card-block {
-  padding: 3%;
+  padding: 1%;
   font-weight: 500;
   color: #6697EA;
 }
