@@ -1,4 +1,5 @@
 class  PostsController < ApplicationController
+  before_action :required_user, except: [:index, :show]
 
   def index
     @posts = Post.all
@@ -14,7 +15,7 @@ class  PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
        if @post.save
         flash[:notice] = 'Post was successfully created.'
         redirect_to post_path(@post, post_id: @post.id)
@@ -25,7 +26,8 @@ class  PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
     flash[:notice] = "Post deleted"
     redirect_to root_path
   end
@@ -36,7 +38,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :link)
+    params.require(:post).permit(:title, :description, :link, :user_id)
   end
 
 end

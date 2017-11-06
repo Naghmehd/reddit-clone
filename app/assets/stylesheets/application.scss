@@ -38,11 +38,11 @@ table th, .table td {
 .table th, .table td {
      border-top: none !important;
  }
- 
-div.add-comment {
+
+li.add-comment {
   font-weight: 600;
   font-size: x-small;
-  padding-left: 2.5em;
+  padding-left: -0.5em;
   a {
     color: #FD835E;
   }
@@ -52,7 +52,7 @@ div.add-comment {
   list-style-type: none;
 }
 
-.xdelete {
+.pull-right {
   position: absolute;
   right:20px;
 }

@@ -5,7 +5,7 @@
       <li>
         <%=  "#{@post.title}" %>
       </li>
-      <li class="xdelete"><%= link_to @post,
+      <li class="pull-right"><%= link_to @post,
             method: :delete,
             data: { confirm: "Are you sure you want to delete this post?" },
             class: "delete"  do %>
@@ -13,7 +13,12 @@
           <% end %>
       </li>
     </ul>
-    <div class="add-comment"><%= link_to "ADD COMMENT", new_comment_path(post_id: @post.id) %></div>
+    <div>
+      <ul class="row index">
+        <li class="add-comment"><%= link_to "ADD COMMENT", new_comment_path(post_id: @post.id) %></li>
+        <li class="pull-right"><%= current_user.email %></li>
+      </ul>
+    </div>
   </div>
 </div>
 <hr>
