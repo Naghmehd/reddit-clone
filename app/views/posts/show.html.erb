@@ -28,6 +28,7 @@
       <% @comments.each do |comment| %>
       <tr>
         <th scope="row"> Comment: <%= comment.description %> </th>
+        <th><%= current_user.email %> </th>
       <% end %>
       </tr>
     </tbody>
