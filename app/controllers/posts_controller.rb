@@ -7,7 +7,6 @@ class  PostsController < ApplicationController
 
   def show
     @post = find_post
-
     @comments = @post.comments
   end
 
@@ -17,7 +16,7 @@ class  PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-       if @post.save
+       if @post.save!
         flash[:notice] = 'Post was successfully created.'
         redirect_to post_path(@post, post_id: @post.id)
        else

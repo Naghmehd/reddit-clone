@@ -1,13 +1,16 @@
 class  CommentsController < ApplicationController
-  before_action :find_post, only: :new
+  before_action :required_user, except: [:index, :show]
+  before_action :find_post, only: [:new, :show]
 
   def new
     @comment = @post.comments.new
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
+      flash[:notice] = 'Comment was successfully created.'
+      # redirect_to post_path(@post)
       redirect_to post_path(@comment.post.id)
     else
       flash[:error] = @comment.errors.full_messages
