@@ -22,7 +22,8 @@ private
     # { email: 'someemail@email.com', password: 'password', 'password_confirmation: 'password' }
     params.require(:user).permit(:email,
                                  :password,
-                                 :password_confirmation
+                                 :password_confirmation,
+                                 :post_id
                                  )
   end
 end

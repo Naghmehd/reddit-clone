@@ -7,6 +7,7 @@ class  PostsController < ApplicationController
 
   def show
     @post = find_post
+
     @comments = @post.comments
   end
 
