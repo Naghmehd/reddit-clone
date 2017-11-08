@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107184838) do
+ActiveRecord::Schema.define(version: 20171108023238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20171107184838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "post_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "voteable_type"
+    t.bigint "voteable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id"
   end
 
   add_foreign_key "comments", "posts"
