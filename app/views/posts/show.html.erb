@@ -29,6 +29,9 @@
       <tr>
         <th scope="row"> Comment: <%= comment.description %> </th>
         <th><%= current_user.email %> </th>
+        <th><%= render partial: "/layouts/plus", locals: { voteable: comment }  %></th>
+        <th><%= render partial: "/layouts/minus", locals: { voteable: comment } %></th>
+        </div>
       <% end %>
       </tr>
     </tbody>

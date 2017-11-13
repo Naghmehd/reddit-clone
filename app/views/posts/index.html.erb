@@ -23,9 +23,15 @@
           <% end %>
       </ul>
       </div>
-      <%= render partial: "/layouts/plus", locals: { voteable: post }  %>
-      <%= render partial: "/layouts/minus", locals: { voteable: post } %>
-
-    </div>
+      <div>
+        <ul class="row index">
+          <li class="pull-left">
+            <%= render partial: "/layouts/plus", locals: { voteable: post }  %>
+          </li>
+          <li class="pull-right">
+            <%= render partial: "/layouts/minus", locals: { voteable: post } %>
+        </li>
+        </ul>
+      </div>
   </div>
   <% end %>
