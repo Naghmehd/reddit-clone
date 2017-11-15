@@ -1,12 +1,15 @@
-<h1>All Posts: </h2>
-  <% @posts.each do |post| %>
+<h1>
+  All Posts:
+</h2>
+<% @posts.each do |post| %>
   <div class="card">
     <div id="title" class="card-block">
       <ul class="row index">
         <li>
           <%= link_to "#{post.title}", post %>
         </li>
-        <li class="pull-right"><%= link_to post,
+        <li class="pull-right">
+          <%= link_to post,
               method: :delete,
               data: { confirm: "Are you sure you want to delete this post?" },
               class: "delete"  do %>
@@ -16,22 +19,25 @@
       </ul>
       <div>
         <ul class="row index">
-          <li class="add-comment"><%= link_to "ADD COMMENT", new_comment_path(post_id: post.id) %>
-          </li>
-          <% if logged_in? %>
-          <li class="pull-right"><%= current_user.email %></li>
-          <% end %>
-      </ul>
-      </div>
-      <div>
-        <ul class="row index">
-          <li class="pull-left">
-            <%= render partial: "/layouts/plus", locals: { voteable: post }  %>
+          <li class="add-comment">
+            <%= link_to "ADD COMMENT", new_comment_path(post_id: post.id) %>
           </li>
           <li class="pull-right">
-            <%= render partial: "/layouts/minus", locals: { voteable: post } %>
-        </li>
+            <%= post.user.email %>
+          </li>
         </ul>
       </div>
+      <div class="no-gutters row justify-content-end">
+        <div class="col-sm-1">
+          <%= "#{post.vote_sum} / #{post.votes.count}" %>
+        </div>
+        <div class="col-sm-1">
+          <%= render partial: "/layouts/vote", locals: { voteable: post, value: 1 }  %>
+        </div>
+        <div class="col-sm-1">
+          <%= render partial: "/layouts/vote", locals: { voteable: post, value: -1 } %>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
+<% end %>

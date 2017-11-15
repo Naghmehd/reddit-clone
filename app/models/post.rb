@@ -6,5 +6,9 @@ class Post < ApplicationRecord
 
  has_many :comments, dependent: :destroy
  has_many :votes, as: :voteable
- 
+
+ def vote_sum
+   votes.map(&:value).sum
+ end
+
 end
